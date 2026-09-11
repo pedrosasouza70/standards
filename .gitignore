@@ -1,0 +1,15 @@
+# Arquivos de download e partes temporárias
+downloads/
+*.part
+*.tmp
+
+# Caches do Python
+__pycache__/
+*.pyc
+*.pyo
+
+# IDEs e Sistema
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

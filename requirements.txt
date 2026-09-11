@@ -1,0 +1,2 @@
+# Este projeto utiliza exclusivamente a biblioteca padrão do Python 3 (http.server, sqlite3, json, urllib).
+# Não são necessárias dependências externas para execução no Render.

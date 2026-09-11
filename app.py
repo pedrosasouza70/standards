@@ -127,7 +127,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscador de Normas Técnicas (clara.nz)</title>
+    <title>Standards (clara.nz)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -402,17 +402,17 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <div class="container">
         <header>
             <div class="title-group">
-                <h1>Acervo de Normas Técnicas</h1>
-                <p>Busca e catálogo de documentos técnicos de clara.nz</p>
+                <h1>Standards</h1>
+                <p>Catálogo e busca de standards de clara.nz</p>
             </div>
             <div class="stats-badge" id="totalStats">
-                Carregando acervo...
+                Carregando catálogo...
             </div>
         </header>
 
         <div class="search-section">
             <div class="search-box">
-                <input type="text" id="searchInput" class="search-input" style="padding-left: 16px;" placeholder="Digite o número ou nome da norma (ex: 9001, 14229, 27001, J1939, CAN, USB, 26262)..." autofocus autocomplete="off">
+                <input type="text" id="searchInput" class="search-input" style="padding-left: 16px;" placeholder="Buscar standard por número ou nome (ex: 9001, 14229, 27001, J1939, CAN, USB, 26262)..." autofocus autocomplete="off">
             </div>
             <div class="category-chips" id="categoryChips">
                 <div class="chip active" data-org="TODOS">Todos</div>
@@ -429,7 +429,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                 <thead>
                     <tr>
                         <th style="width: 100px;">Org</th>
-                        <th>Nome da Norma / Arquivo</th>
+                        <th>Arquivo / Standard</th>
                         <th style="width: 110px;">Tamanho</th>
                         <th style="width: 130px;">Data</th>
                         <th style="width: 250px; text-align: center;">Ações</th>
@@ -478,7 +478,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             try {
                 const res = await fetch("/api/stats");
                 const data = await res.json();
-                totalStats.innerText = `${data.total.toLocaleString()} normas indexadas`;
+                totalStats.innerText = `${data.total.toLocaleString()} standards indexados`;
 
                 categoryChips.innerHTML = '<div class="chip active" data-org="TODOS">Todos (' + data.total.toLocaleString() + ')</div>';
                 data.categories.forEach(c => {
@@ -510,7 +510,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
         async function executeSearch() {
             const start = performance.now();
-            resultsTableBody.innerHTML = '<tr><td colspan="5" class="empty-state"><span class="loading-spinner"></span> Buscando normas...</td></tr>';
+            resultsTableBody.innerHTML = '<tr><td colspan="5" class="empty-state"><span class="loading-spinner"></span> Buscando standards...</td></tr>';
             
             const offset = (currentPage - 1) * pageSize;
             const params = new URLSearchParams({
@@ -525,7 +525,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                 const data = await res.json();
                 const duration = Math.round(performance.now() - start);
 
-                resultsCount.innerText = `${data.total.toLocaleString()} norma(s) encontrada(s)`;
+                resultsCount.innerText = `${data.total.toLocaleString()} standard(s) encontrado(s)`;
                 queryTime.innerText = `${duration} ms`;
 
                 renderResults(data.results, data.total);
@@ -536,7 +536,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
         function renderResults(items, total) {
             if (!items || items.length === 0) {
-                resultsTableBody.innerHTML = '<tr><td colspan="5" class="empty-state">Nenhuma norma encontrada para essa pesquisa.</td></tr>';
+                resultsTableBody.innerHTML = '<tr><td colspan="5" class="empty-state">Nenhum standard encontrado para essa pesquisa.</td></tr>';
                 prevPageBtn.disabled = true;
                 nextPageBtn.disabled = true;
                 pageInfo.innerText = "Página 0 de 0";

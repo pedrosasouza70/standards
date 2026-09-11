@@ -94,3 +94,21 @@ Todos os arquivos baixados ficam salvos organizados na pasta `downloads/`.
   - **ODVA:** 21 especificações de rede industrial
   - **CAN & OBD2:** Diagnóstico automotivo e barramentos
   - **ASAM, FTDI, GMW, LIN, VXI, etc.**
+
+---
+
+## 🌐 Como colocar no Render (onrender.com)
+
+O projeto já está 100% configurado para o Render com `render.yaml`, detecção automática de porta e `standards.db` incluído.
+
+### Passo a Passo no Render:
+1. Acesse seu painel no [dashboard.render.com](https://dashboard.render.com).
+2. Clique no botão **New +** e selecione **Web Service**.
+3. Conecte sua conta do GitHub e escolha o repositório: `pedrosasouza70/normas-tecnicas`.
+4. O Render detectará automaticamente as configurações. Caso peça para preencher:
+   - **Runtime:** `Python 3`
+   - **Build Command:** *(pode deixar vazio ou `pip install -r requirements.txt`)*
+   - **Start Command:** `python app.py`
+5. Clique em **Deploy Web Service** (no plano gratuito / Free).
+
+Em poucos segundos, o Render fornecerá uma URL pública gratuita (ex: `https://normas-tecnicas.onrender.com`) para você e quem você quiser pesquisar as normas online de qualquer dispositivo!
